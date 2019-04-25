@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="container">
+  <div class="jumbotron">
+    <h1>Company Blog</h1>
+    <p>Welcome to Our Company's Blog Page</p>
+  </div>
+</section>
+    {# Go through each blog post #}
+
+<div class="container">
+     <div style="margin-top:5px;" class="mainbox col-md-100 col-md-offset-80 col-sm-80 col-sm-offset-0">
+        <div class="panel panel-default">
+          <div class="panel-body">
+                {% for post in blog_posts.items %}
+
+                <div class="card text-center" >
+
+                  <div class="card-header">
+
+                    <h2><a class="card-title" href="  {{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title }}</a></h2>
+                    <a href="{{ url_for('users.user_posts', username=post.author.username) }}">Written By: {{ post.author.username }}</a>
+                    <p>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
+                    <p class="card-text">{{ post.text[:1000] }}...</p>
+                    <p><h7>Attache File: {{ post.upload }}</h7></p>
+                    <a href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}" class="btn btn-primary">Read Blog Post</a>
+                  </div>
+                </div>
+
+                {% endfor %}
+          </div>
+        </div>
+     </div>
+</div>
+
+   <nav aria-label="Page navigation example">
+     <ul class="pagination justify-content-center">
+       {% for page_num in blog_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+          {% if blog_posts.page == page_num %}
+          <li class="page-item disabled">
+            <a class="page-link" href="{{ url_for('core.index', page=page_num) }}">{{ page_num }}</a></li>
+          </li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="{{ url_for('core.index', page=page_num) }}">{{ page_num }}</a></li>
+          {% endif %}
+      {% endfor %}
+     </ul>
+   </nav>
+
+  </div>
+
+
+{% endblock %}

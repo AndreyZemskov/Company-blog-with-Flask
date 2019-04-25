@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+		<div style="margin-top:3px;" class="mainbox col-md-60 col-md-offset-30 col-sm-80 col-sm-offset-1">
+			<div class="panel panel-default">
+				<div class="panel-body">
+                    <div class="jumbotron">
+                      <div align='center'>
+                          <h3>Welcome to the page for {{current_user.username}}</h3>
+                          <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+                          <p>{{ current_user.email }}</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+  </div>
+</div>
+<div class="container">
+  <form  method="POST" action="" enctype="multipart/form-data" role="form">
+		  <div style="margin-top:3px;" class="mainbox col-md-60 col-md-offset-30 col-sm-80 col-sm-offset-1">
+			<div class="panel panel-default">
+              <div class="panel-body">
+                  {{ form.hidden_tag() }}
+                  <div class="form-group">
+                    {{ form.username.label }}
+                    {{ form.username(class='form-control')  }}
+                  </div>
+                  <div class="form-group">
+                    {{ form.email.label }}
+                    {{form.email(class='form-control')  }}
+                  </div>
+                  <div class="form-group">
+                    {{ form.picture.label }}
+                    {{ form.picture(class="form-control-file") }}
+                  </div>
+                  <div class="form-group">
+                      {{ form.submit(class="btn btn-primary") }}
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  </form>
+
+</div>
+
+{% endblock content %}

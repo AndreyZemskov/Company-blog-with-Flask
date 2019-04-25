@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+     <div style="margin-top:50px;" class="mainbox col-md-60 col-md-offset-30 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+                    <h3>{{ post.title }}</h3>
+                    <h4>Written by: {{post.author.username}}</h4>
+                    <h5>Published: {{ post.date.strftime('%B %d, %Y') }}</h5>
+                    <h6>Attached File: {{ post.upload }}</h6>
+                    <p>{{post.text}}</p>
+
+                    {% if not current_user.is_authenticated %}
+                    <div align='center'>
+                        <a href="{{ url_for('users.login') }}"><span class="glyphicon glyphicon-log-in"></span> Look at more</a>
+                    </div>
+                    {% endif %}
+
+                     {% if current_user.is_authenticated %}
+                     <div>
+                       <a href="{{ url_for('blog_posts.update', blog_post_id=post.id) }}"target="blank"><button type="button" class="btn btn-primary">Update</button></a>
+                       <a href="{{ url_for('blog_posts.download', blog_post_id=post.id) }}" target="blank"><button type="button" class="btn btn-primary">Download</button></a>
+                       <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#del_modal">Delete</button>
+                     </div>
+                     {% endif %}
+
+
+          </div>
+        </div>
+     </div>
+</div>
+
+  <div class="modal" tabindex="-1" role="dialog" id="del_modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete Post Pop up Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this blog post?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+
+          <form action="{{ url_for('blog_posts.delete_post', blog_post_id=post.id) }}" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}

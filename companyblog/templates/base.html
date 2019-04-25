@@ -1,0 +1,29 @@
+{% extends 'bootstrap/base.html' %}
+  {% block navbar %}
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ url_for('core.index') }}"> Company Blog</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ url_for('core.info') }}"><span class="glyphicon glyphicon-eye-open"></span> About Us</a></li>
+        {% if current_user.is_authenticated %}
+          <li><a href="{{ url_for('users.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+          <li><a href="{{ url_for('users.account') }}"><span class="glyphicon glyphicon-user"></span> Account</a></li>
+          <li><a href="{{ url_for('blog_posts.create_post') }}"><span class="glyphicon glyphicon-list-alt"></span> Create Post</a></li>
+        {% else %}
+        <li><a href="{{ url_for('users.login') }}"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        <li><a href="{{ url_for('users.register') }}"><span class="glyphicon glyphicon-fire"></span> Register</a></li>
+        {% endif %}
+
+        </ul>
+
+
+    </div>
+  </nav>
+{% endblock %}
+
+
+
+
+
