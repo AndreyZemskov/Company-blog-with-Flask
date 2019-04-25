@@ -8,10 +8,10 @@ Before uses application you should install libraries from requirements.txt and i
   
 
 # Blog view
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/register.PNG)
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/account_view.PNG)
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/login.PNG)
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/blog_overview.PNG)
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/create_posts.PNG)
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/post_view.PNG)
-![alt text](https://github.com/AndreyZemskov/Flask/blob/master/Screens/user_blog_posts_view.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/register.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/account_view.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/login.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/blog_overview.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/create_posts.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/post_view.PNG)
+![alt text](https://github.com/AndreyZemskov/Company-blog-with-Flask/blob/master/screens/user_blog_posts_view.PNG)
